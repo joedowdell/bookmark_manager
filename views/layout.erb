@@ -5,9 +5,10 @@
 </head>
 <body>
 	<h1>Welcome to bookmark manager</h1>
-
+	<% if current_user %>
+	Welcome, <%= current_user.email %>
+	<% end %>
 	<%= yield %>
-
 </body>
 
 

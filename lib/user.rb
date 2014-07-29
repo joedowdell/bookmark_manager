@@ -1,4 +1,5 @@
 require 'bcrypt'
+require 'rack-flash'
 
 class User
 

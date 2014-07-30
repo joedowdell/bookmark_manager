@@ -25,6 +25,18 @@ feature "User signs in" do
 			sign_in('test@test.com', 'wrong')
 			expect(page).not_to have_content("Welcome, test@test.com")
 		end
+end
+
+feature "User forgets password" do
+
+	scenario "when user has forgotten password" do
+			visit '/sessions/new'
+			click_button "Forgotten password"
+			expect(page).to have_content("To reset your password please enter your email address:")
+			expect(page).not_to have_content("Welcome, test@test.com")
+	end
+
+
 end 
 
 feature "User signs out" do 

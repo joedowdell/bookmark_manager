@@ -1,6 +1,6 @@
 To reset your password please enter your email address:
 
-<form method="post" action="/sessions/reset_password">
-	Email: <input type="text" name="email" value="<%= params[:email] %>">
+<form method="post" action="/sessions/recover">
+	Email: <input type="text" name="email">
 	<input type="submit" value="Send reset email">
 </form>

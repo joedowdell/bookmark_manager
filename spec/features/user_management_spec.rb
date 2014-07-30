@@ -36,7 +36,7 @@ feature "User forgets password" do
 	end
 
 	scenario "when user has forgotten password" do
-			visit '/sessions'
+			visit '/sessions/new'
 			click_button "Forgotten password"
 			expect(page).to have_content("To reset your password please enter your email address:")
 			expect(page).not_to have_content("Welcome, test@test.com")

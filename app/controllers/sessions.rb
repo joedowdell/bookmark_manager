@@ -21,14 +21,6 @@ delete '/sessions' do
   redirect to('/')
 end
 
-get '/sessions/password_reset' do
-  erb :"sessions/password_reset"
-end
-
-post '/sessions/password_reset' do
-  erb :"sessions/recover"
-end
-
 get '/sessions/recover' do 
   erb :"/sessions/recover"
 end
@@ -40,9 +32,13 @@ post '/sessions/recover' do
     user.password_token = (1..64).map{('A'..'Z').to_a.sample}.join
     user.password_token_timestamp = Time.now
     user.save
-     erb :"sessions/email_sent"
+    erb :"/sessions/reset_password"
   else
     flash[:notice] = ["You cannot reset a password for an unregistered user. Please register first."]
     redirect to('/sessions/new')
   end
+end
+
+post '/sessions/reset_password' do
+  erb :"/sessions/reset_password"
 end

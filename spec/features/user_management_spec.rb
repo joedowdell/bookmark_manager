@@ -29,11 +29,23 @@ end
 
 feature "User forgets password" do
 
+	before(:each) do 
+			User.create(:email => "test@test.com",
+									:password => 'test',
+									:password_confirmation => 'test')
+	end
+
 	scenario "when user has forgotten password" do
-			visit '/sessions/new'
+			visit '/sessions'
 			click_button "Forgotten password"
 			expect(page).to have_content("To reset your password please enter your email address:")
 			expect(page).not_to have_content("Welcome, test@test.com")
+	end
+
+	scenario "when a unregistered user clicks forgotten password" do
+		visit '/sessions/recover'
+		click_button "Send reset email"
+		expect(page).to have_content("You cannot reset a password for an unregistered user. Please register first.")
 	end
 
 

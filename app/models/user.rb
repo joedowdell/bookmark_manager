@@ -37,16 +37,6 @@ class User
 	end
 
 	def send_password_reset
-		RestClient.post "https://api:key-94e5805225a1d51f1749d853ec3ec27f"\
-  	"@api.mailgun.net/v2/sandbox09032655beb7405b998fde40c819fe70.mailgun.org/messages",
-  	from: "Mailgun Sandbox <postmaster@sandbox09032655beb7405b998fde40c819fe70.mailgun.org>",
-		to: self.email,
-		subject: "Your reset password link",
-		text: "http://localhost:9292/users/reset_password/#{self.password_token}"
-	end
-
-
-	def send_password_reset
 		RestClient.post "https://api:key-08222904c429916ed3762b72c122bf49"\
   	"@api.mailgun.net/v2/sandbox1963fa8a1a4146c3bac04fd4df7fa6a7.mailgun.org/messages",
   	from: "Mailgun Sandbox <postmaster@sandbox1963fa8a1a4146c3bac04fd4df7fa6a7.mailgun.org>",

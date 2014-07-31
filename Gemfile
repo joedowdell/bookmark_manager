@@ -7,6 +7,7 @@ gem 'rack-flash3'
 gem 'sinatra'
 gem 'sinatra-partial'
 gem 'rest-client'
+gem 'pg'
 
 group :development, :test do
 	gem 'capybara'

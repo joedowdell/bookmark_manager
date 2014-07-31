@@ -20,7 +20,12 @@ end
 get '/users/reset_password/:token' do
   puts request.url
   @user = User.first(:password_token => params[:token])
-  erb :"users/reset_password/:token"
+    if hour_time_limit? @user.password_token_timestamp.to_time
+      erb :"users/reset_password/:token"
+    else 
+      flash[:notice] = "Your token has expired. Please request another password"
+      redirect to('sessions/recover')
+    end
 end
 
 post '/users/reset_password' do

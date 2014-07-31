@@ -41,4 +41,5 @@ post '/users/reset_password' do
       flash.now[:errors] = @user.errors.full_messages
       erb :"/users/reset_password/:token"
     end
+      
 end

@@ -15,6 +15,17 @@ post '/users' do
     erb :"users/new"
   end
 
-
-  
 end
+
+get '/users/reset_password/:token' do
+  puts request.url
+  @user = User.first(:password_token => params[:token])
+  erb :"users/reset_password/:token"
+end
+
+post '/users/reset_password/:token' do 
+  "Hello World"
+end
+
+
+

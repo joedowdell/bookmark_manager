@@ -24,16 +24,14 @@ get '/users/reset_password/:token' do
 end
 
 post '/users/reset_password' do
-  @user = User.update(:password => params[:password],
-                      :password_confirmation => params[:password_confirmation])
-    # if @user.save
-    #   session[:user_id] = @user.id
-    #   redirect to('/')
-    # else
-    #   flash.now[:errors] = @user.errors.full_messages
-    #   erb :"/users/reset_password/:token"
-    # end
+  @user = User.first(:password_token => params[:password_token])
+  @user.password = params[:password]
+  @user.password_confirmation = params[:password_confirmation]
+    if @user.save
+      session[:user_id] = @user.id
+      redirect to('/')
+    else
+      flash.now[:errors] = @user.errors.full_messages
+      erb :"/users/reset_password/:token"
+    end
 end
-
-
-

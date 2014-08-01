@@ -97,6 +97,8 @@ GEM
     rspec-mocks (3.0.3)
       rspec-support (~> 3.0.0)
     rspec-support (3.0.3)
+    shotgun (0.9)
+      rack (>= 1.0)
     sinatra (1.4.5)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -127,5 +129,6 @@ DEPENDENCIES
   rack-flash3
   rest-client
   rspec
+  shotgun
   sinatra
   sinatra-partial

@@ -22,6 +22,7 @@ Technical Configuration
   - Postgresql
   - Cucumber
   - RSpec
+  - Capybara
   - BCrypt
 
 Collaborators
